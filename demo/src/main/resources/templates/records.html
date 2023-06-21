@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org">
+<head>
+    <title>Records</title>
+</head>
+<body>
+<h2>Records</h2>
+<table>
+    <tr>
+        <th>Employee ID</th>
+        <th>Project ID</th>
+        <th>Date From</th>
+        <th>Date To</th>
+    </tr>
+    <!-- Iterate over the records and display them in the table -->
+    <tr th:each="record : ${records}">
+        <td th:text="${record.employeeId}"></td>
+        <td th:text="${record.projectId}"></td>
+        <th th:text="${record.dateFrom}"></th>
+        <td th:text="${record.dateTo}"></td>
+    </tr>
+</table>
+
+<!-- Display the longest pair of employees -->
+<h3>Longest Pair of Employees:</h3>
+<div th:if="${longestPair}">
+    <p>Employee ID #1: <span th:text="${longestPair.employeeId1}"></span></p>
+    <p>Employee ID #2: <span th:text="${longestPair.employeeId2}"></span></p>
+    <p>Days Worked: <span th:text="${longestPair.totalDuration}"></span></p>
+</div>
+<div th:unless="${longestPair}">
+    <p>No pair of employees found.</p>
+</div>
+</body>
+</html>
